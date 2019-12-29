@@ -7,11 +7,13 @@ const Home = (props) => (
   <Layout>
     <div>
       <Head>
-        <title>BitNext</title>
+        <title>Next Minimal - Home</title>
       </Head>
-      <h1>Home</h1>
-      <p>Please select your prefered currency rate:</p>
-      <Prices bpi={props.bpi}/>
+      <h1 className="font-bold text-gray-800 text-3xl antialiased font-sans mb-2">Home</h1>
+      <div className="w-full rounded overflow-hidden shadow p-5">
+        <div className="font-bold text-base mb-2 text-gray-700">Please select your prefered currency rate:</div>
+        <Prices bpi={props.bpi}/>
+      </div>
     </div> 
   </Layout>
 )

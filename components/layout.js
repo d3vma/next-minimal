@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import Nav from './nav.js'
+import '../styles/main.css'
 
 const Layout = (props) => (
-  <div>
-    <Head>
-      <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css" />
-    </Head>
+  <div className="bg-gray-100 h-screen">
+    <Head></Head>
     <Nav />
-    <div className="container">
+    <div className="container mx-auto">
       {props.children}
     </div>
   </div>
