@@ -4,6 +4,7 @@ import Layout from '../components/layout.js'
 import Link from 'next/link'
 
 function User({ user }) {
+  console.log(user);
   return (
     <Layout>
       <div>
@@ -40,11 +41,9 @@ function User({ user }) {
             <div className="table-row">
               <div className="table-cell bg-gray-200 text-gray-700 border px-4 py-2 text-sm font-bold">Reach me?</div>
               <div className="table-cell bg-gray-300 text-gray-700 border px-4 py-2 text-sm">
-                <Link href="{user.website}">
-                  <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
-                    <span>Visit website</span>
-                  </button>
-                </Link>
+                <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+                  <a href="//{user.website}">Visit website</a>
+                </button>
               </div>
             </div>
           </div>
