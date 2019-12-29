@@ -1,7 +1,7 @@
 import Fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import Head from 'next/head'
-import Layout from '../components/layout.js'
+import Layout from '../../components/layout.js'
 
 function Users({ users }) {
   return (
@@ -16,9 +16,9 @@ function Users({ users }) {
             <div className="flex flex-wrap -mx-2">
               {users.map(user => (
                 <div className="w-1/2 px-2 mb-5" key={user.id}>
-                  <Link href={`/user?userId=${user.id}`}>
+                  <Link href='/users/[id]' as={`/users/${user.id}`}>
                     <div className="bg-transparent hover:bg-teal-500 text-teal-700 hover:text-white border border-teal-500 p-3 rounded text-center cursor-pointer visited:bg-teal-500">
-                      <Link href={`/user?userId=${user.id}`}><a>{user.name}</a></Link>
+                      <a>{user.name}</a>
                     </div>
                   </Link>
                 </div>

@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Layout from '../components/layout.js'
+import Layout from '../../components/layout.js'
 import Link from 'next/link'
 
-function User({ user }) {
-  console.log(user);
+
+function UserProfile({ user }) {
   return (
     <Layout>
       <div>
         <Head>
           <title>Next Minimal - {user.name}</title>
         </Head>
-        <h1 className="font-bold text-gray-800 text-3xl antialiased font-sans mb-2">User details</h1>
+        <h1 className="font-bold text-gray-800 text-3xl antialiased font-sans mb-2">User details: <i>@{user.username.toLowerCase()}</i></h1>
         <div className="w-full rounded overflow-hidden shadow p-5 mb-5">
           <div className="table w-full rounded">
             <div className="table-row">
@@ -41,9 +41,11 @@ function User({ user }) {
             <div className="table-row">
               <div className="table-cell bg-gray-200 text-gray-700 border px-4 py-2 text-sm font-bold">Reach me?</div>
               <div className="table-cell bg-gray-300 text-gray-700 border px-4 py-2 text-sm">
-                <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
-                  <a href="//{user.website}">Visit website</a>
-                </button>
+                <Link href="{user.website}">
+                  <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+                    <span>Visit website</span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -59,14 +61,15 @@ function User({ user }) {
   )
 }
 
-async function getInitialProps({ query }) {
+UserProfile.getInitialProps = async ({ query }) => {
+  const { id } = query
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${query.userId}`
-  );
-  const user = await response.json();
-  return { user };
+    `https://jsonplaceholder.typicode.com/users/${id}`
+  )
+  const user = await response.json()
+  return { user }
 }
 
-User.getInitialProps = getInitialProps;
 
-export default User
+
+export default UserProfile
